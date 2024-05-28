@@ -1,0 +1,47 @@
+# You are given two strings word1 and word2. Merge the strings by adding letters in alternating order, starting with word1. 
+# If a string is longer than the other, append the additional letters onto the end of the merged string.
+# Return the merged string.
+
+
+class Solution(object):
+    def mergeAlternately(self, word1, word2):
+        """
+        :type word1: str
+        :type word2: str
+        :rtype: str
+        """
+
+        # word1_list = []
+        # word1_list[:] = word1
+
+        # word2_list = []
+        # word2_list[:] = word2
+
+        new_list = []
+        # min_indexes = min(len(word1_list), len(word2_list))
+        # for i in range(min_indexes):
+        #     if word1_list[i] is not None and word2_list[i] is not None:
+        #         new_list.append(word1_list[i])
+        #         new_list.append(word2_list[i])
+    
+        # new_word = ''.join(new_list)
+
+        # if len(word1_list) > len(word2_list):
+        #     word1_list = ''.join(word1_list[min_indexes:])
+        #     new_word = new_word + word1_list
+        # elif len(word1_list) < len(word2_list):
+        #     word2_list = ''.join(word2_list[min_indexes:])
+        #     new_word = new_word + word2_list
+        # else:
+        #     new_word = new_word
+
+
+        for a, b in zip(word1, word2):
+            new_list.append(a + b)
+
+        new_list.append(word1[len(word2):])
+        new_list.append(word2[len(word1):])
+
+        new_word = ''.join(new_list)
+
+        return new_word
