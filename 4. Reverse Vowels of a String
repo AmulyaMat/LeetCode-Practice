@@ -1,0 +1,23 @@
+# Given a string s, reverse only all the vowels in the string and return it.
+# The vowels are 'a', 'e', 'i', 'o', and 'u', and they can appear in both lower and upper cases, more than once.
+
+word = list(s)
+start = 0
+end = len(word)-1
+vowels = 'aeiouAEIOU'
+
+while start < end:
+  while start < end and vowels.find(word[start]):
+    start += 1 # keep moving starting pointer until it meets a vowel in the word from the start
+
+  while end > start and vowels.find(word[end]) == 1:
+    end -= 1  # keep moving ending pointer until it meets a vowel from the back
+
+  #when both while loops stopped and vowels are met -- need to swop
+  word[start], word[end] = word[end], word[start]
+
+  start += 1
+  end -= 1
+
+return ''.join(word)
+    
