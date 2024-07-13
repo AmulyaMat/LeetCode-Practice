@@ -1,0 +1,22 @@
+# Write a Python function that takes the dot product of a matrix and a vector. return -1 if the matrix could not be dotted with the vector
+
+def matrix_dot_vector(a:list[list[int|float]],b:list[int|float])-> list[int|float]:
+  
+  a1 = a[0]
+  n = len(b)
+  
+  if len(a1) == len(b):
+    final_ans = []
+    for a11 in a:
+      ans = 0
+      for i in range(n):
+        ans += a11[i]*b[i]
+          
+      final_ans.append(ans)
+      
+    return final_ans
+    
+    
+  else:
+    return -1
+  
