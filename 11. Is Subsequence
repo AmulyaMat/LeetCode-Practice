@@ -11,13 +11,13 @@ class Solution:
             s_list = list(s)
             t_list = list(t)
 
-            current_ind = 0
+            i = 0
+            j = 0
 
-            for i in range(len(s_list)):
-                ind = t.find(s_list[i])
-                if ind == -1 or ind < current_ind:
-                    return False
-                else:
-                    current_ind = ind
+            # iterate over letters in t, and try to match with letters in s
+            while i < len(s) and j < len(t):
+                if t[j] == s[i]:
+                    i += 1        # if condition is true, move pointer of s by 1, otherwise the pointer stays there
+                j += 1   # pointer of t should keep moving as the iteration is over lengthof t (longer word)
 
-            return True
+            return i == len(s)    # if the iteration of t is over, and 'i' has not reached the end of s
