@@ -6,35 +6,22 @@
 class Solution:
     def canPlaceFlowers(self, flowerbed: List[int], n: int) -> bool:
 
-        if n == 0: #if there are no flowers, then it is still true
-            return True
-        
-        for i in range(len(flowerbed)): # going through each flower in flowerbed
+        # you go through each flower in plot
+        # first check if left and right flower is 0, then place the flower and reduce n
+        # and start the process again
 
-        # 3 conditions - 
-        # flowerbed[i] should == 0 AND
-        # flowerbed[i-1] == 0 AND
-        # flowerbed[i+1] == 0
+        # otherwise, keep looping
 
-        # but in edge cases -
-        # flowerbed[i] should still be == 0 AND
-        # i == 0 AND
-        # flowerbed[i+1] == 0
+        for i in range(len(flowerbed)):
+            left = i == 0 or flowerbed[i-0] == 0 # considering both edge case and normal middle case
+            right = i == len(flowerbed) - 1 or flowerbed[i+1] == 0 # considering both edge case and normal case
 
-        # edge case 2
-        # flowerbed[i] should still be 0 AND
-        # i == len(flowerbed)-1
-        # i == 0
-        
+            if left and right and flowerbed[i] == 0:  # check if [0, 0, 0] --> [0, 1, 0]
+                n -= 1. # reduce the flowers, then iterate again
 
-        if ((flowerbed[i] == 0) and (i == 0 or flowerbed[i-1]==0) and ((i == len(flowerbed) -1) or flowerbed[i+1] == 0)):
-            flowerbed[i] == 1
-            n -= 1
+        return n <=0 # return true or false condition if there is some flowers leftout or not
 
-            if n == 0:
-                return True
-
-        return False
+    
 
 
 
